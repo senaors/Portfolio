@@ -3,7 +3,7 @@
 A full-stack web portfolio built with **HTML5, CSS3, JavaScript, PHP & MySQL** —
 
 🌐 **Live Demo:** [your-live-link-here]  
-📁 **GitHub:** [github.com/yourusername/portfolio](https://github.com)
+📁 **GitHub:** [github.com/senaors/Portfolio](https://github.com)
 
 ---
 
