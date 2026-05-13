@@ -1,137 +1,75 @@
 # Portfolio — Nur Sena Örs
 
-A full-stack web portfolio built with **HTML5, CSS3, JavaScript, PHP & MySQL** —
+A full-stack portfolio I built from scratch using HTML5, CSS3, JavaScript, PHP and MySQL. This started as a course project but I wanted it to actually look like something I'd be proud to share — so I put a lot of extra work into the design and the details.
 
 🌐 **Live Demo:** [your-live-link-here]  
-📁 **GitHub:** [github.com/senaors/Portfolio](https://github.com)
+📁 **GitHub:** [github.com/senaors/Portfolio](https://github.com/senaors)
 
 ---
 
-## ✨ Features
+## What's in it
 
-- **Responsive Design** — Mobile-first layout using CSS Flexbox & Grid
-- **Dark / Light Mode** — Toggleable theme persisted via cookies
-- **Dynamic Projects** — Fetched from MySQL database via AJAX (no page reload)
-- **Contact Form** — JavaScript validation + server-side PHP + saved to MySQL
-- **Admin Dashboard** — Session-based login, add/edit/delete projects, view messages
-- **Semantic HTML5** — Proper use of `<nav>`, `<section>`, `<footer>`, `<form>`, tables
-- **Scroll Animations** — IntersectionObserver-based reveal effects
-
----
-
-## 🗂️ Project Structure
-
-```
-portfolio/
-├── index.php              # Main entry point (PHP + HTML)
-├── css/
-│   └── style.css          # External stylesheet (responsive, dark mode)
-├── js/
-│   └── main.js            # DOM manipulation, AJAX, form validation, cookies
-├── php/
-│   ├── db.php             # Database connection
-│   ├── get_projects.php   # AJAX endpoint — returns projects as JSON
-│   └── contact.php        # AJAX endpoint — saves contact messages
-├── admin/
-│   ├── login.php          # Admin login (PHP Sessions)
-│   ├── dashboard.php      # Admin CRUD panel
-│   └── logout.php         # Session destroy
-└── sql/
-    └── portfolio_db.sql   # Full database export (import this first!)
-```
+- Responsive layout that works on mobile and desktop, built with CSS Grid and Flexbox
+- Dark/light mode toggle — preference saved in a cookie so it remembers you
+- Projects section loaded dynamically from a MySQL database via AJAX (no page reload)
+- Contact form with both client-side JS validation and server-side PHP validation, messages saved to DB
+- Admin dashboard behind a session login — add, edit, delete projects and read contact messages
+- Scroll reveal animations using IntersectionObserver
 
 ---
 
-## 🛠️ Tech Stack
+## Project structure
+
+The main entry point is `index.php`. Styles are in `css/style.css`, client-side logic in `js/main.js`. Backend PHP files live under `php/` (database connection, project endpoint, contact endpoint) and the admin panel is under `admin/`. The SQL export is in `sql/portfolio_db.sql`.
+
+---
+
+## Tech stack
 
 | Layer    | Technology                     |
 | -------- | ------------------------------ |
 | Frontend | HTML5, CSS3, JavaScript (ES6+) |
 | Backend  | PHP 8+                         |
-| Database | MySQL (via mysqli)             |
+| Database | MySQL via mysqli               |
 | Server   | Apache (XAMPP)                 |
-| Fonts    | Google Fonts (Syne + DM Sans)  |
+| Fonts    | Google Fonts — Syne + DM Sans  |
 
 ---
 
-## 🚀 Local Setup (XAMPP)
+## Running it locally
 
-### 1. Place Files
+**Requirements:** XAMPP (Apache + MySQL)
 
-Copy the `portfolio/` folder to:
+1. Copy the `portfolio/` folder into `C:\xampp\htdocs\`
+2. Start Apache and MySQL from the XAMPP control panel
+3. Go to `http://localhost/phpmyadmin`, create a database called `portfolio_db`, then import `sql/portfolio_db.sql`
+4. Open `http://localhost/Portfolio/`
 
-```
-C:\xampp\htdocs\portfolio\
-```
-
-### 2. Start XAMPP
-
-Open XAMPP Control Panel → Start **Apache** and **MySQL**
-
-### 3. Import Database
-
-1. Open `http://localhost/phpmyadmin`
-2. Create a new database named `portfolio_db`
-3. Click **Import** → select `sql/portfolio_db.sql` → click **Go**
-
-### 4. Open the Portfolio
-
-```
-http://localhost/portfolio/
-```
-
-### 5. Admin Panel
-
-```
-http://localhost/portfolio/admin/login.php
-
-Username: admin
-Password: Admin@1234
-```
+**Admin panel:** `http://localhost/Portfolio/admin/login.php`  
+Username: `admin` / Password: `Admin@1234`
 
 ---
 
-## 📋 Requirements Coverage
+## The part that took the most work
 
-| Requirement                         | Implementation                             |
-| ----------------------------------- | ------------------------------------------ |
-| Semantic HTML5 tags                 | `<nav>`, `<section>`, `<footer>`, `<form>` |
-| Tables & Forms                      | Contact form, Admin dashboard table        |
-| CSS Box Model / Flexbox / Grid      | Used throughout layout                     |
-| External stylesheet                 | `css/style.css`                            |
-| Dynamic UI (dark mode, mobile menu) | `js/main.js` — cookie-persisted theme      |
-| JavaScript Form Validation          | Client-side + server-side (PHP)            |
-| DOM Manipulation on user events     | Scroll reveal, mobile nav, form feedback   |
-| Contact → MySQL                     | `php/contact.php` + `contacts` table       |
-| Dynamic content from DB             | `php/get_projects.php` → JSON → DOM        |
-| AJAX / Fetch API                    | Projects & contact form — no page reload   |
-| Sessions & Cookies                  | Admin session + theme cookie               |
-| Admin Dashboard (add/edit/delete)   | `admin/dashboard.php`                      |
-| SQL export file                     | `sql/portfolio_db.sql`                     |
+Getting the AJAX + DOM integration right was trickier than I expected. The projects load asynchronously from PHP, but I also needed the scroll reveal animations (IntersectionObserver) to work on those dynamically created cards — they don't exist in the DOM at page load, so the observer had nothing to attach to initially. I ended up calling `observer.observe()` on each card right after injecting it, with a small staggered delay so the animations feel natural.
 
 ---
 
-## 🔐 Security Notes
+## Security
 
-- All user inputs sanitized with `htmlspecialchars()` and `filter_var()`
-- Prepared statements (PDO/mysqli) used to prevent SQL injection
-- `session_regenerate_id()` called on login to prevent session fixation
-- Admin cookie uses `HttpOnly` flag
-
----
-
-## 📸 Screenshots
-
-> Add screenshots of your portfolio here after deployment.
+- Inputs sanitized with `htmlspecialchars()` on the PHP side and `escHtml()` in JS
+- Prepared statements with `bind_param()` throughout — no raw SQL with user input
+- `session_regenerate_id(true)` on login to prevent session fixation
+- Admin remember cookie set with `HttpOnly`
 
 ---
 
-## 👤 Author
+## Author
 
-**Nur Sena Örs**  
-Full-Stack Developer  
-📧 senaors136@hotmail.com
-🔗 [LinkedIn](https://www.linkedin.com/in/nur-sena-%C3%B6rs-6958b9238/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Be1O%2FtT5SQBip4qKXrT488g%3D%3D) · [GitHub](https://github.com/senaors?tab=overview&from=2026-04-01&to=2026-04-30)
+**Nur Sena Örs** — Full-Stack Developer  
+senaors136@hotmail.com  
+[LinkedIn](https://www.linkedin.com/in/nur-sena-%C3%B6rs-6958b9238/) · [GitHub](https://github.com/senaors)
 
 ---
 
