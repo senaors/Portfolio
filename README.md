@@ -2,7 +2,7 @@
 
 A full-stack portfolio I built from scratch using HTML5, CSS3, JavaScript, PHP and MySQL. This started as a course project but I wanted it to actually look like something I'd be proud to share — so I put a lot of extra work into the design and the details.
 
-🌐 **Live Demo:** [your-live-link-here]  
+🌐 **Live Demo:** [senaors.42web.io/Portfolio/]  
 📁 **GitHub:** [github.com/senaors/Portfolio](https://github.com/senaors)
 
 ---
