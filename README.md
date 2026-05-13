@@ -46,7 +46,11 @@ The main entry point is `index.php`. Styles are in `css/style.css`, client-side 
 4. Open `http://localhost/Portfolio/`
 
 **Admin panel:** `http://localhost/Portfolio/admin/login.php`  
+<<<<<<< HEAD
 Username: `admin` / Password: `Admin@1234`
+=======
+Username: `admin` / Password: `set in admin/login.php`
+>>>>>>> b4701e7509e0ae3bd0ca0a086a81e43c4ed9247a
 
 ---
 
